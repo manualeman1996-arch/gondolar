@@ -7,6 +7,17 @@ una webapp mobile-first (sin app, sin login) y recibe su ubicación
 encontré" y cada búsqueda alimentan un dashboard de retail intelligence con
 analytics y campañas de productos patrocinados (retail media MVP).
 
+## 🚀 Publicar en 1 click
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmanualeman1996-arch%2Fgondolar%2Ftree%2Fclaude%2Fshelfsearch-mvp-ytq7im&project-name=shelfsearch&repository-name=shelfsearch)
+
+Apretás el botón → Vercel importa el repo y deploya. Las claves públicas de
+Supabase ya van en `.env.production`, así que **no hace falta configurar nada**.
+En ~1 min tenés la URL en vivo:
+
+- Shopper: `https://TU-URL.vercel.app/s/super-demo-palermo`
+- Admin: `https://TU-URL.vercel.app/admin/login` → `admin@shelfsearch.demo` / `shelfsearch123`
+
 ## Stack
 
 - **Next.js 15** (App Router) · **TypeScript** · **Tailwind CSS** · componentes propios
