@@ -1,0 +1,6 @@
+store_slug,product_name,brand,category,tags,aisle,shelf,side,height,zone,instructions
+super-demo-palermo,Yerba CBSe Energía 500g,CBSe,Yerba,"yerba,energia,mate",1,A,izquierda,media,Almacén,Junto a las yerbas saborizadas
+super-demo-palermo,Leche Entera La Serenísima 1L,La Serenísima,Lácteos,"leche,entera",3,B,derecha,alta,Frío,Heladera de lácteos
+super-demo-palermo,Arena Sanicat para gato 5kg,Sanicat,Mascotas,"arena,gato,arena para gato",11,F,derecha,baja,Mascotas,Estante inferior sector mascotas
+super-demo-palermo,Tornillos Phillips 4x40 (x10),Genérico,Construcción,"tornillos,ferreteria",15,H,izquierda,media,Bazar,Sector ferretería
+super-demo-belgrano,Proteína Whey Vainilla 1kg,FitPro,Almacén,"proteina,whey,suplemento",8,D,derecha,media,Saludable,Góndola de productos saludables

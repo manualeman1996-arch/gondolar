@@ -1,0 +1,16 @@
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
+
+/**
+ * Service-role Supabase client. SERVER ONLY — bypasses RLS.
+ * Use exclusively for privileged operations (seed scripts, creating admin
+ * users). Never import this into client components.
+ */
+export function createAdminClient() {
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!key) {
+    throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
+  }
+  return createSupabaseClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
