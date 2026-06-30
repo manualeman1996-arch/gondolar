@@ -1,0 +1,39 @@
+name: Deploy to Vercel (manual)
+
+# Triggered on-demand. Takes the Vercel token as an input (masked in logs) so no
+# repo secret is required. GitHub's runners can reach Vercel even when a sandbox
+# can't. The public Supabase build vars are injected at build time.
+on:
+  workflow_dispatch:
+    inputs:
+      vercel_token:
+        description: "Vercel access token"
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mask token
+        run: echo "::add-mask::${{ inputs.vercel_token }}"
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/shelfsearch-mvp-ytq7im
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Deploy to Vercel (production)
+        run: |
+          set -o pipefail
+          npx --yes vercel@latest deploy --prod --yes \
+            --token="${{ inputs.vercel_token }}" \
+            --build-env NEXT_PUBLIC_SUPABASE_URL="https://bzbhxhuhckistjdkdqgs.supabase.co" \
+            --build-env NEXT_PUBLIC_SUPABASE_ANON_KEY="sb_publishable_Bq-E5IiynZjtCUxZg2jqPA_sLHzrN4N" \
+            2>&1 | tee deploy.log
+          URL=$(grep -Eo 'https://[a-zA-Z0-9._-]+\.vercel\.app' deploy.log | tail -1)
+          echo "## Deploy listo" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**URL:** $URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "Shopper: $URL/s/super-demo-palermo" >> "$GITHUB_STEP_SUMMARY"
+          echo "Admin: $URL/admin/login" >> "$GITHUB_STEP_SUMMARY"
+          echo "DEPLOY_URL=$URL"
